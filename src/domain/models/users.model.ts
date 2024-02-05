@@ -1,6 +1,6 @@
 export interface IUser {
   email: string
-  hasCompleteGame: boolean
+  hasCompletedGame: boolean
 }
 export interface IUsersModel {
   users: IUser[]

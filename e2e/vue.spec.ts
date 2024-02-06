@@ -2,20 +2,18 @@ import { test, expect } from '@playwright/test'
 
 test('visits the app root url', async ({ page }) => {
   await page.goto('/fast-track-challenge/')
-  await expect(page.locator('div > h1')).toHaveText('Are You a Real Pokemon Master')
+  await expect(page.getByRole('heading', { name: 'Are You a Real Pokemon Master' })).toBeVisible()
 })
 
 test('verify the existence of the link "Prove It"', async ({ page }) => {
   await page.goto('/fast-track-challenge/')
-  const link = page.locator('a[href="/fast-track-challenge/sign-in"]')
+  const link = page.getByRole('link', { name: 'Prove It' })
   await expect(link).toHaveCount(1)
   await expect(link).toHaveText('Prove It')
 })
 
 test('Go to the sign-in page', async ({ page }) => {
   await page.goto('/fast-track-challenge/')
-  const link = page.locator('a[href="/fast-track-challenge/sign-in"]')
-  await expect(link).toHaveCount(1)
-  await link.click()
-  await expect(page).toHaveURL(/sign-in/)
+  await page.getByRole('link', { name: 'Prove It' }).click()
+  await expect(page).toHaveURL(/.*sign-in/)
 })

@@ -6,7 +6,7 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './infrastructure/router'
 import { VueFire } from 'vuefire'
-import { firebaseApp } from '@/firebase'
+import { firebaseApp } from './infrastructure/firebase/firebase'
 
 const app = createApp(App)
 

@@ -17,6 +17,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@vueuse/core": "^10.7.2",
     "firebase": "^10.8.0",
     "pinia": "^2.1.7",
     "vue": "^3.4.15",

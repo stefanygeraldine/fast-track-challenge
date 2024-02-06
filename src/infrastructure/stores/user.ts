@@ -5,7 +5,8 @@ import type { IUser } from '@/domain/models/users.model'
 export const useUserStore = defineStore('user', () => {
   const user: Ref<IUser> = ref({
     email: '',
-    hasCompletedGame: false
+    hasCompletedGame: false,
+    correctAnswers: 0
   })
 
   function updateUser(_user: IUser) {

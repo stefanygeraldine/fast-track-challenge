@@ -1,71 +1,25 @@
 # fast-track-challenge
+# Project Name
 
-This template should help get you started developing with Vue 3 in Vite.
+Brief project description: This project is an interactive quiz web application that offers a unique user experience with cool parallax effects and a fully responsive interface. Users can answer questions, submit their responses, and see how their results compare to other users.
 
-## Recommended IDE Setup
+## User Stories
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- **Parallax Effect**: As a user, I want to experience a cool parallax effect on the site to make the navigation more dynamic and interesting.
+- **Responsiveness**: As a user, I expect the site to be fully responsive so I can access it from any device.
+- **Access to Questions and Answers**: As a user, I want to receive questions with answer options so I can participate in the quiz.
+- **Answer Selection**: As a user, I want to be able to select just one answer per question to ensure that my responses are accurately recorded.
+- **Submission and Results**: As a user, I want to be able to answer all the questions, submit my answers, and receive feedback on how many answers were correct. This feedback should be displayed to me clearly.
+- **Performance Comparison**: As a user, after completing the quiz, I want to see how well I did compared to others who have taken the quiz, e.g., "You performed better than 60% of all quiz takers."
 
-## Type Support for `.vue` Imports in TS
+## Features
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+- **Interactive Quiz**: Engage with a series of questions, each with multiple-choice answers.
+- **Parallax Scrolling Effect**: Enjoy a visually appealing parallax effect as you navigate through the quiz.
+- **Responsive Design**: Use the application seamlessly on any device, thanks to its responsive design.
+- **Immediate Feedback**: Upon quiz completion, receive immediate feedback on your performance.
+- **Comparison With Peers**: See how your quiz results stack up against those of other participants.
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+## How to Use
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Run End-to-End Tests with [Playwright](https://playwright.dev)
-
-```sh
-# Install browsers for the first run
-npx playwright install
-
-# When testing on CI, must build the project first
-npm run build
-
-# Runs the end-to-end tests
-npm run test:e2e
-# Runs the tests only on Chromium
-npm run test:e2e -- --project=chromium
-# Runs the tests of a specific file
-npm run test:e2e -- tests/example.spec.ts
-# Runs the tests in debug mode
-npm run test:e2e -- --debug
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+WIP

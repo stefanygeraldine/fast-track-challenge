@@ -11,7 +11,8 @@ const { updateUser } = useUserStore()
 
 const user = ref<IUser>({
   email: '',
-  hasCompletedGame: false
+  hasCompletedGame: false,
+  correctAnswers: 0
 })
 
 const validateUser = (): void => {

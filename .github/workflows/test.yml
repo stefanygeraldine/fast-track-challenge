@@ -20,11 +20,11 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm install
-      - name: Running Test Unit
+      - name: Running Test unit
         run: |
           npm run test:unit
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-      - name: Run Playwright tests
+      - name: Running Test e2e
         run: |
           npm run test:e2e

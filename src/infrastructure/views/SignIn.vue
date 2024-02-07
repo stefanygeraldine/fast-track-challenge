@@ -4,6 +4,7 @@ import type { IUser } from '@/domain/models/users.model'
 import { useUsers } from '@/infrastructure/composables/useUser.composable'
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/infrastructure/stores/user'
+import { isValidEmail } from '@/infrastructure/utilities/valid-email.util'
 
 const { isRegisteredUser } = useUsers()
 const router = useRouter()
@@ -16,6 +17,11 @@ const user = ref<IUser>({
 })
 
 const validateUser = (): void => {
+  if (!isValidEmail(user.value.email)) {
+    alert('Please enter a valid email address.')
+    return
+  }
+
   const hasCompletedGame: boolean = isRegisteredUser(user.value.email)
   if (hasCompletedGame) {
     router.push('/dashboard')
@@ -29,5 +35,5 @@ const validateUser = (): void => {
 
 <template>
   <input type="text" v-model="user.email" />
-  <button v-on:click="validateUser()">Validate</button>
+  <button @click="validateUser">Validate</button>
 </template>

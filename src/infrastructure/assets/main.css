@@ -4,3 +4,54 @@ body{
 section{
     height: 100vh;
 }
+
+h1{
+    font-family: 'Anton', sans-serif;
+    color: #ffcc01;
+    font-size: 5vw;
+}
+
+h4{
+    font-family: 'Anton', sans-serif;
+    color: #ffcc01;
+    font-size: 2vw;
+}
+
+.button{
+    background-color: transparent;
+    font-family: 'Roboto', sans-serif;
+    border: solid 3px #ffcc01;
+    color: #ffcc01;
+    border-radius: 3rem;
+    padding: 1rem 3rem;
+    font-size: 2vw;
+    text-decoration: none;
+
+}
+.button:hover {
+    background-color: #3264b0;
+    border: solid 3px #ffcc01;
+    transition: background-color 0.3s, color 0.3s;
+}
+.button:active {
+    box-shadow: 0 2px #666;
+    transform: translateY(4px);
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.input{
+    background-color: transparent;
+    font-family: 'Roboto', sans-serif;
+    border: solid 3px #ffcc01;
+    color: #fff;
+    border-radius: 3rem;
+    padding: 1rem 3rem;
+    font-size: 2vw;
+    outline: 0;
+}

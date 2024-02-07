@@ -5,10 +5,10 @@ import Parallax from '@/infrastructure/components/Parallax.vue'
 
 <template>
   <Parallax />
-  <section>
-    <h1>Are You a Real Pokemon Master</h1>
+  <section class="container">
+    <h1>Are You a Real Pokemon Master?</h1>
     <nav>
-      <RouterLink to="/sign-in">Prove It</RouterLink>
+      <RouterLink class="button" to="/sign-in">Prove It</RouterLink>
     </nav>
   </section>
 </template>

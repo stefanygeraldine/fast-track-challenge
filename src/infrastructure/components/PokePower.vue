@@ -16,34 +16,14 @@ const props = defineProps<{
   height: 35px;
   border-radius: 50%;
   margin: 10px 5px;
+  box-shadow: 2px 0 4px #000;
 }
 
 .wrapper-poke-power {
   max-width: -webkit-fill-available;
   display: flex;
 }
-.active {
-  box-shadow: rgb(255 255 255) 1px 1px 14px !important;
-  cursor: pointer;
-}
-.poke-power-active {
-  box-shadow: rgb(21 123 255) 1px 1px 14px;
-  cursor: pointer;
-}
 
-.poke-power {
-  transform: scale(1.5);
-  box-shadow: rgb(0 12 107) 1px 1px 14px;
-  cursor: pointer;
-}
-
-.poke-power:hover {
-  box-shadow: rgb(21 123 255) 1px 1px 14px;
-}
-.power-item {
-  padding: 24px;
-  float: left;
-}
 /* icons Powers */
 .water {
   background-position: -17px -19px;

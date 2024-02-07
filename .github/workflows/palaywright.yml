@@ -1,5 +1,5 @@
 # Simple workflow for deploying static content to GitHub Pages
-name: Test Unit
+name: Tests E2E
 
 on:
   # Runs on pushes targeting the default branch
@@ -20,6 +20,10 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm install
-      - name: Running Test unit
+        env:
+          VITE_BASE_URL: ${{ vars.BASE_URL }}
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: Running Test e2e
         run: |
-          npm run test:unit
+          npm run test:e2e

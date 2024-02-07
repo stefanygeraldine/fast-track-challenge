@@ -7,20 +7,21 @@ const props = defineProps<{
   pokemons: IPokemon[]
 }>()
 
-const emit = defineEmits(['fecthPokemon', 'setStatusError', 'addStep'])
+const emit = defineEmits(['fecthPokemon', 'setStepStatus', 'addStep'])
 
-const optionSelected = ref('')
+const optionSelected = ref<string>('')
+const disabled = ref<boolean>(false)
 
-function seleccionarPokemonsAleatorios(exceptoNombre: string, cantidad: number): IPokemon[] {
+function selectRandomPokemons(exceptoName: string, quantity: number): IPokemon[] {
   return props.pokemons
-    .filter((pokemon) => pokemon.name !== exceptoNombre)
+    .filter((pokemon) => pokemon.name !== exceptoName)
     .sort(() => 0.5 - Math.random())
-    .slice(0, cantidad)
+    .slice(0, quantity)
 }
 
 const options = computed(() => {
   if (props.pokemonFull) {
-    const incorrectas = seleccionarPokemonsAleatorios(props.pokemonFull?.name ?? '', 2)
+    const incorrectas = selectRandomPokemons(props.pokemonFull?.name ?? '', 2)
     return [...incorrectas, props.pokemonFull].sort(() => 0.5 - Math.random())
   } else {
     return []
@@ -28,15 +29,19 @@ const options = computed(() => {
 })
 
 function checkAnswer(nameSelected: string) {
+  disabled.value = true
   if (props.pokemonFull && nameSelected === props.pokemonFull.name) {
-    emit('setStatusError', false)
+    emit('setStepStatus', 'success')
   } else {
-    emit('setStatusError', true)
+    emit('setStepStatus', 'error')
   }
   const step = { answer: props.pokemonFull?.name, question: nameSelected }
-  emit('addStep', step)
+
   setTimeout(() => {
+    emit('addStep', step)
+    emit('setStepStatus', 'initial')
     emit('fecthPokemon')
+    disabled.value = false
   }, 1000)
 }
 </script>
@@ -46,11 +51,17 @@ function checkAnswer(nameSelected: string) {
     <form @submit.prevent="checkAnswer(optionSelected)">
       <div v-for="option in options" :key="option.name">
         <label>
-          <input type="radio" v-model="optionSelected" :value="option.name" :id="option.name" />
+          <input
+            type="radio"
+            :disabled="disabled"
+            v-model="optionSelected"
+            :value="option.name"
+            :id="option.name"
+          />
           {{ option.name }}
         </label>
       </div>
-      <button type="submit">Enviar Respuesta</button>
+      <button type="submit" :disabled="disabled">Enviar Respuesta</button>
     </form>
   </div>
 </template>

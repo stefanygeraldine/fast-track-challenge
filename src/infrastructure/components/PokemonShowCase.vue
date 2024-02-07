@@ -2,12 +2,13 @@
 import Loading from '@/infrastructure/components/Loading.vue'
 import type { IPokemonFull } from '@/domain/models/pokemon.model'
 import PokePower from '@/infrastructure/components/PokePower.vue'
-import ErrorShaker from '@/infrastructure/components/ErrorShaker.vue'
+import StatusNotification from '@/infrastructure/components/StatusNotification.vue'
+import type { StepStatus } from '@/domain/models/steps.model'
 
 const props = defineProps<{
   pokemonFull: IPokemonFull | undefined
   isFetchingPokemonFull: boolean
-  statusError: boolean
+  stepStatus: StepStatus
 }>()
 </script>
 
@@ -17,13 +18,13 @@ const props = defineProps<{
   </template>
   <template v-else-if="pokemonFull">
     <h1>Who is that Pokemon?</h1>
-    <ErrorShaker :active="statusError">
+    <StatusNotification :status="stepStatus">
       <img
         :src="props.pokemonFull?.sprites?.other?.dream_world?.front_default"
         alt="front-picture"
         style="width: 18rem"
       />
-    </ErrorShaker>
+    </StatusNotification>
     <h1>{{ pokemonFull.name }}</h1>
     <div class="container-poke-power">
       <PokePower
@@ -44,7 +45,6 @@ const props = defineProps<{
   background-color: rgb(0 0 0 / 68%);
   padding: 10px;
   border-radius: 10px;
-  border-color: #4776fa !important;
   border: solid 3px #4776fa;
   overflow-x: auto;
 }

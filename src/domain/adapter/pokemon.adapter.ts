@@ -13,10 +13,11 @@ export const pokemonListAdapter = (data: any): IPokemon[] => {
 }
 
 export const pokemonFullAdapter = (data: any): IPokemonFull => {
-  const pokemon: IPokemonFull = {}
+  const pokemon: IPokemonFull = { types: [] }
   pokemon.id = data.id ?? ''
   pokemon.name = data.name ?? ''
   pokemon.abilities = data.abilities ?? {}
+  pokemon.types = data.types ?? []
   pokemon.sprites = data.sprites ?? {
     back_default: '',
     back_female: '',

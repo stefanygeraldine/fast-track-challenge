@@ -7,6 +7,8 @@ const props = defineProps<{
   pokemons: IPokemon[]
 }>()
 
+const emit = defineEmits(['fecthPokemon', 'setStatusError', 'addStep'])
+
 const optionSelected = ref('')
 
 function seleccionarPokemonsAleatorios(exceptoNombre: string, cantidad: number): IPokemon[] {
@@ -27,16 +29,20 @@ const options = computed(() => {
 
 function checkAnswer(nameSelected: string) {
   if (props.pokemonFull && nameSelected === props.pokemonFull.name) {
-    alert('¡Right!')
+    emit('setStatusError', false)
   } else {
-    alert('Try again.')
+    emit('setStatusError', true)
   }
+  const step = { answer: props.pokemonFull?.name, question: nameSelected }
+  emit('addStep', step)
+  setTimeout(() => {
+    emit('fecthPokemon')
+  }, 1000)
 }
 </script>
 
 <template>
   <div>
-    <h2>Who is that Pokemon?</h2>
     <form @submit.prevent="checkAnswer(optionSelected)">
       <div v-for="option in options" :key="option.name">
         <label>

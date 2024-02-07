@@ -5,7 +5,7 @@ import { useUsers } from '@/infrastructure/composables/useUser.composable'
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/infrastructure/stores/user'
 
-const { addUser, users, isRegisteredUser } = useUsers()
+const { isRegisteredUser } = useUsers()
 const router = useRouter()
 const { updateUser } = useUserStore()
 
@@ -29,12 +29,5 @@ const validateUser = (): void => {
 
 <template>
   <input type="text" v-model="user.email" />
-  <ul>
-    <li v-for="user in users" :key="user?.id">
-      <span>{{ user?.email }}</span>
-    </li>
-  </ul>
-
-  <button v-on:click="addUser(user)">Add user</button>
   <button v-on:click="validateUser()">Validate</button>
 </template>

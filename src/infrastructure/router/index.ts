@@ -23,6 +23,8 @@ const router = createRouter({
         const { user } = useUserStore()
         if (user.hasCompletedGame) {
           next('/dashboard')
+        } else if (user.email === '') {
+          next('/sign-in')
         } else {
           next()
         }

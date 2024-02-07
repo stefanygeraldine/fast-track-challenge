@@ -18,7 +18,7 @@ export function usePokemon() {
     } finally {
       setTimeout(() => {
         isFetchingPokemons.value = false
-      }, 500)
+      }, 800)
     }
   }
 
@@ -31,7 +31,7 @@ export function usePokemon() {
     } finally {
       setTimeout(() => {
         isFetchingPokemonFull.value = false
-      }, 500)
+      }, 800)
     }
   }
 

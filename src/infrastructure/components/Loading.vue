@@ -148,7 +148,7 @@
 </template>
 <style scoped>
 .custom-loading {
-  background-color: white;
+  background-color: black;
   display: flex;
   align-items: center;
   justify-content: center;

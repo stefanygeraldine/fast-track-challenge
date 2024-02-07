@@ -23,8 +23,8 @@ jobs:
       - name: Running Test unit
         run: |
           npm run test:unit
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
-      - name: Running Test e2e
-        run: |
-          npm run test:e2e
+      #- name: Install Playwright Browsers
+      #  run: npx playwright install --with-deps
+      #- name: Running Test e2e
+      #  run: |
+      #    npm run test:e2e

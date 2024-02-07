@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
+import Parallax from '@/infrastructure/components/Parallax.vue'
 </script>
 
 <template>
-  <div class="wrapper">
+  <Parallax />
+  <section>
     <h1>Are You a Real Pokemon Master</h1>
     <nav>
       <RouterLink to="/sign-in">Prove It</RouterLink>
     </nav>
-  </div>
+  </section>
 </template>
 
 <style scoped></style>

@@ -13,7 +13,7 @@ const adjustSectionHeight = () => {
   let imageHeight = images[0].getBoundingClientRect().height
 
   if (parallaxSection.value) {
-    parallaxSection.value.style.height = `${imageHeight}px`
+    parallaxSection.value.style.height = `${imageHeight - 10}px`
   }
 }
 

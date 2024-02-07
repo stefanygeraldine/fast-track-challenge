@@ -34,6 +34,9 @@ const validateUser = (): void => {
 </script>
 
 <template>
-  <input type="text" v-model="user.email" />
-  <button @click="validateUser">Validate</button>
+  <section class="container">
+    <label for="email">Email</label>
+    <input class="input" type="text" v-model="user.email" />
+    <button class="button" @click="validateUser">Validate</button>
+  </section>
 </template>

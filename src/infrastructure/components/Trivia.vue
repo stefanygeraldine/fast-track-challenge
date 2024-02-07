@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import type { IPokemonFull, IPokemon } from '@/domain/models/pokemon.model'
+import RadioButtons from '@/infrastructure/components/RadioButtons.vue'
 
 const props = defineProps<{
   pokemonFull: IPokemonFull | undefined
@@ -44,26 +45,26 @@ function checkAnswer(nameSelected: string) {
     disabled.value = false
   }, 1000)
 }
+
+const handleSelected = (value: string) => {
+  optionSelected.value = value
+}
 </script>
 
 <template>
-  <div>
+  <div class="form">
+    <h5>Who is that Pokemon?</h5>
     <form @submit.prevent="checkAnswer(optionSelected)">
-      <div v-for="option in options" :key="option.name">
-        <label>
-          <input
-            type="radio"
-            :disabled="disabled"
-            v-model="optionSelected"
-            :value="option.name"
-            :id="option.name"
-          />
-          {{ option.name }}
-        </label>
-      </div>
-      <button type="submit" :disabled="disabled">Enviar Respuesta</button>
+      <RadioButtons @handle-selected="handleSelected" :options="options" :disabled="disabled" />
+      <button class="button" type="submit" :disabled="disabled">Check</button>
     </form>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.form {
+  background-color: #132939;
+  padding: 2rem 3rem;
+  border-radius: 2rem;
+}
+</style>

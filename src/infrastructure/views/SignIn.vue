@@ -7,6 +7,8 @@ import { useUserStore } from '@/infrastructure/stores/user'
 import { isValidEmail } from '@/infrastructure/utilities/valid-email.util'
 import Banner from '@/infrastructure/assets/images/banner.png'
 import Header from '@/infrastructure/components/Header.vue'
+import StarImage from '@/infrastructure/assets/parallax/stars.svg'
+import FooterSvg from '@/infrastructure/assets/parallax/footer.svg'
 
 const { isRegisteredUser } = useUsers()
 const router = useRouter()
@@ -37,6 +39,8 @@ const validateUser = (): void => {
 
 <template>
   <section class="container form" :style="{ backgroundImage: `url(${Banner})` }">
+    <img class="form__image" :src="StarImage" alt="Star Image" />
+    <img class="form__image--footer" :src="FooterSvg" alt="Footer Svg" />
     <Header>
       <nav class="navigation">
         <RouterLink class="link__light" to="/dashboard">Dashboard</RouterLink>
@@ -53,12 +57,24 @@ const validateUser = (): void => {
 <style scoped lang="scss">
 .form {
   @extend .global-background;
+  position: relative;
+  overflow: hidden;
   &__container {
     position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+  &__image {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    &--footer {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+    }
   }
 }
 </style>

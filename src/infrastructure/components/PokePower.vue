@@ -10,7 +10,7 @@ const props = defineProps<{
 </template>
 <style>
 .sprite {
-  background: url('@/infrastructure/assets/sprite.png') no-repeat;
+  background: url('@/infrastructure/assets/icons/sprite.png') no-repeat;
   background-size: 280px;
   width: 35px;
   height: 35px;

@@ -12,9 +12,9 @@ export const pokemonRepository = {
         throw new Error(message)
       })
   },
-  fetchPokemonFull: async (id: number): Promise<IPokemonFull> => {
+  fetchPokemonFull: async (param: number | string): Promise<IPokemonFull> => {
     return await pokemonApi
-      .get(`pokemon/${id}`)
+      .get(`pokemon/${param}`)
       .then((response) => pokemonFullAdapter(response.data))
       .catch(({ response }) => {
         const message: string = response?.data?.error ?? 'Fetching error'

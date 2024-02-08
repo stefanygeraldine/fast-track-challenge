@@ -16,7 +16,7 @@ export interface IPokemonFull {
   name?: string
   image?: string
   abilities?: {}
-  types: PokeType[]
+  types?: PokeType[]
   sprites?: {
     back_default?: string
     back_female?: string

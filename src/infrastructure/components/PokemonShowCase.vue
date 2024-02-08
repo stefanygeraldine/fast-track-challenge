@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import Loading from '@/infrastructure/components/Loading.vue'
 import type { IPokemonFull } from '@/domain/models/pokemon.model'
-import PokePower from '@/infrastructure/components/PokePower.vue'
 import StatusNotification from '@/infrastructure/components/StatusNotification.vue'
 import type { StepStatus } from '@/domain/models/steps.model'
-import Vibrant from 'node-vibrant/lib/bundle'
+import { ref } from 'vue'
+import { getPalette } from '@/infrastructure/utilities/vibrant.util'
 
 const props = defineProps<{
   pokemonFull: IPokemonFull | undefined
@@ -12,13 +12,16 @@ const props = defineProps<{
   stepStatus: StepStatus
 }>()
 
-const getPalette = (): void => {
-  const img = props.pokemonFull?.sprites?.other?.dream_world?.front_default
-  Vibrant.from(img ?? '')
-    .getPalette()
-    .then((palette) => {
-      document.body.style.background = palette.Vibrant?.hex ?? '#132939'
-    })
+const emit = defineEmits(['updateBgColor'])
+
+const lightColor = ref<string>('#132939')
+const colorVibrant = ref<string>('#132939')
+const setColor = async (): Promise<void> => {
+  const img = props.pokemonFull?.sprites?.other?.dream_world?.front_default ?? ''
+  const { vibrant, light } = await getPalette(img)
+  lightColor.value = light
+  colorVibrant.value = vibrant
+  emit('updateBgColor', vibrant)
 }
 </script>
 
@@ -26,36 +29,33 @@ const getPalette = (): void => {
   <template v-if="props.isFetchingPokemonFull">
     <Loading />
   </template>
-  <div id="showcase container" v-else-if="pokemonFull">
+  <div id="showcase" class="container" v-else-if="pokemonFull">
     <StatusNotification :status="stepStatus">
+      <div
+        class="fondo"
+        :style="{
+          background: `radial-gradient(circle, rgba(255,255,255,0) 20%, ${colorVibrant} 80%,  ${colorVibrant} 100%), linear-gradient(to right, ${lightColor}, ${lightColor})`
+        }"
+      ></div>
       <img
         class="showcase__image"
         :src="props.pokemonFull?.sprites?.other?.dream_world?.front_default"
         alt="front-picture"
         style="width: 18rem"
-        @load="getPalette"
+        @load="setColor"
         id="target-image"
       />
     </StatusNotification>
-    <div class="container-poke-power">
-      <PokePower
-        v-for="power in props.pokemonFull?.types"
-        v-bind:key="power.type.name"
-        :type="power.type.name"
-      ></PokePower>
-    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-.container-poke-power {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  border-radius: 10px;
-  overflow-x: auto;
+.fondo {
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  position: absolute;
+  z-index: -1;
 }
 .showcase {
   &__image {

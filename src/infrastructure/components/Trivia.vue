@@ -2,6 +2,7 @@
 import { computed, ref } from 'vue'
 import type { IPokemonFull, IPokemon } from '@/domain/models/pokemon.model'
 import RadioButtons from '@/infrastructure/components/RadioButtons.vue'
+import PokePower from '@/infrastructure/components/PokePower.vue'
 
 const props = defineProps<{
   pokemonFull: IPokemonFull | undefined
@@ -52,19 +53,40 @@ const handleSelected = (value: string) => {
 </script>
 
 <template>
-  <div class="form">
-    <h5>Who is that Pokemon?</h5>
-    <form @submit.prevent="checkAnswer(optionSelected)">
+  <div class="form container">
+    <div class="form__powers">
+      <PokePower
+        v-for="power in props.pokemonFull?.types"
+        v-bind:key="power.type.name"
+        :type="power.type.name"
+      ></PokePower>
+    </div>
+    <h4 class="title__heavy">Who is this Pokemon?</h4>
+    <p>
+      <span class="caption__heavy">Clue:</span>
+      <span class="caption__light"> &nbsp; {{ pokemonFull?.name?.slice(0, 3) }}...</span>
+    </p>
+    <form class="container" @submit.prevent="checkAnswer(optionSelected)">
       <RadioButtons @handle-selected="handleSelected" :options="options" :disabled="disabled" />
       <button class="button" type="submit" :disabled="disabled">Check</button>
     </form>
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .form {
-  background-color: #132939;
+  margin-top: 3rem;
+  background-color: $secondary;
   padding: 2rem 3rem;
   border-radius: 2rem;
+  &__powers {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border-radius: 10px;
+    overflow-x: auto;
+  }
 }
 </style>

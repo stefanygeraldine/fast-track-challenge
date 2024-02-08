@@ -6,7 +6,7 @@ import Logo from '@/infrastructure/assets/images/logo.png'
 <template>
   <header class="header">
     <RouterLink class="link" to="/">
-      <img :src="Logo" alt="Logo" class="header__logo" />
+      <img :src="Logo" loading="lazy" alt="Logo" class="header__logo" />
     </RouterLink>
     <slot></slot>
   </header>
@@ -30,6 +30,9 @@ import Logo from '@/infrastructure/assets/images/logo.png'
   box-sizing: border-box;
   &__logo {
     width: 10rem;
+    @include breakpoint($tablet-landscape, 'max') {
+      width: 6rem;
+    }
   }
 }
 </style>

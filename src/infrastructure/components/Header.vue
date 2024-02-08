@@ -14,12 +14,16 @@ import Logo from '@/infrastructure/assets/images/logo.png'
 
 <style scoped lang="scss">
 .header {
-  background: #132939;
-  position: absolute;
+  @include breakpoint($tablet-landscape, 'max') {
+    padding: 0.5rem;
+  }
+  background: $secondary;
+  position: fixed;
+  z-index: 5;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.5rem 8rem;
   display: flex;
   align-items: center;
   justify-content: space-between;

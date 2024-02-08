@@ -7,7 +7,7 @@
 }
 
 .headline__heavy {
-  font-family: 'Avenir Black', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 900;
   color: $primary;
   @include fluid-property('font-size', 20, 30);
@@ -47,9 +47,10 @@
 }
 
 .subheader__light {
-  font-family: 'Avenir Light', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 400;
-  @include fluid-property('font-size', 14, 16);
+  color: $white;
+  @include fluid-property('font-size', 14, 18);
   @include fluid-property('line-height', 20, 24);
 }
 
@@ -65,6 +66,19 @@
   font-family: 'Avenir Light', sans-serif;
   font-weight: 400;
   @include fluid-property('font-size', 12, 14);
+  @include fluid-property('line-height', 16, 20);
+}
+
+.link__light {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: $primary;
+  text-decoration: none;
+  padding: 0 1rem;
+  &:hover{
+    color:$accent
+  }
+  @include fluid-property('font-size', 16, 20);
   @include fluid-property('line-height', 16, 20);
 }
 

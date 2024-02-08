@@ -82,9 +82,9 @@ onMounted(loadPokemonData)
   }
   &__item {
     margin-bottom: 1em;
-    border: solid 2px #ffcc01;
+    border: solid 2px $primary;
     padding: 1rem 3rem;
-    border-radius: 8px;
+    border-radius: $mainCard;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -97,7 +97,7 @@ onMounted(loadPokemonData)
     &--image {
       width: 6rem;
       height: 6rem;
-      border: solid 3px #ffcc01;
+      border: solid 3px $primary;
       border-radius: 50%;
       margin-right: 2rem;
     }

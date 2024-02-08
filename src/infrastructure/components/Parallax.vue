@@ -64,6 +64,7 @@ onUnmounted(() => {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  z-index: 4;
   &__title {
     position: absolute;
   }
@@ -74,7 +75,7 @@ onUnmounted(() => {
     left: 0;
   }
   &__logo {
-    z-index: 1;
+    z-index: 3;
     width: 37%;
   }
 }

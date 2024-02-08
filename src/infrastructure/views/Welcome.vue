@@ -22,12 +22,20 @@ import Banner from '@/infrastructure/assets/images/banner.png'
   background-size: cover;
   background-position: bottom;
   position: relative;
-  height: 120vh;
+  height: 100vh;
+  @include breakpoint($tablet-landscape, 'max') {
+    z-index: 2;
+    margin-top: -10rem;
+  }
+  @include breakpoint($tablet-landscape, 'min') {
+    height: 120vh;
+  }
+
   &__title {
     text-align: center;
   }
   &__hero {
-    z-index: 1;
+    z-index: 2;
     position: absolute;
     display: flex;
     align-items: center;

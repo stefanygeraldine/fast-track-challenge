@@ -1,12 +1,11 @@
 .input{
-  background-color: transparent;
+  @include fluid-property('font-size', 16, 30);
   font-family: 'Roboto', sans-serif;
   border: solid 3px $primary;
-  color: $white;
   background-color: $secondary;
   border-radius: 3rem;
   padding: 1rem 3rem;
-  font-size: 2vw;
+  color: $white;
   outline: 0;
   margin: 1rem 0;
 }

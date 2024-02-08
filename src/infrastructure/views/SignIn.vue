@@ -39,7 +39,7 @@ const validateUser = (): void => {
   <section class="container form" :style="{ backgroundImage: `url(${Banner})` }">
     <Header>
       <nav class="navigation">
-        <RouterLink class="link" to="/dashboard">Dashboard</RouterLink>
+        <RouterLink class="link__light" to="/dashboard">Dashboard</RouterLink>
       </nav>
     </Header>
     <div class="form__container">
@@ -52,24 +52,7 @@ const validateUser = (): void => {
 </template>
 <style scoped lang="scss">
 .form {
-  background-size: cover;
-  position: relative;
-  background-position: bottom;
-  &:before {
-    content: '';
-    background: $secondary;
-    background: linear-gradient(
-      180deg,
-      rgba(19, 41, 57, 1) 30%,
-      rgba(49, 69, 82, 1) 50%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+  @extend .global-background;
   &__container {
     position: absolute;
     display: flex;

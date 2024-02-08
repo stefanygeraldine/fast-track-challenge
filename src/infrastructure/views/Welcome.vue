@@ -3,9 +3,22 @@ import { RouterLink } from 'vue-router'
 import Parallax from '@/infrastructure/components/Parallax.vue'
 import ParallaxStars from '@/infrastructure/components/ParallaxStars.vue'
 import Banner from '@/infrastructure/assets/images/banner.png'
-import { ref } from 'vue'
+import { onMounted, onBeforeUnmount, ref } from 'vue'
 import FooterSvg from '@/infrastructure/assets/parallax/footer.svg'
 const startSection = ref<HTMLElement | null>(null)
+
+const windowWidth = ref(window.innerWidth)
+const handleResize = () => {
+  windowWidth.value = window.innerWidth
+}
+
+onMounted(() => {
+  window.addEventListener('resize', handleResize)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', handleResize)
+})
 </script>
 
 <template>
@@ -22,17 +35,20 @@ const startSection = ref<HTMLElement | null>(null)
       </h1>
       <RouterLink class="button" to="/sign-in">Prove It</RouterLink>
     </div>
-    <ParallaxStars :startSection="startSection" />
+    <ParallaxStars :startSection="startSection" v-if="windowWidth > 1024" />
     <img class="banner__image--footer" :src="FooterSvg" alt="Footer Svg" />
   </section>
 </template>
 
 <style scoped lang="scss">
 .banner {
+  @include breakpoint($tablet-landscape, 'min') {
+    height: 100vh;
+  }
   background-size: cover;
   background-position: bottom;
   position: relative;
-  height: 100vh;
+  height: 60vh;
 
   &__title {
     text-align: center;

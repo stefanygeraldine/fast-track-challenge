@@ -70,6 +70,9 @@ onMounted(loadPokemonData)
 
 <style scoped lang="scss">
 .summary {
+  @include breakpoint($tablet-landscape, 'max') {
+    padding: 0 5%;
+  }
   width: 100%;
   padding: 0 10%;
   box-sizing: border-box;

@@ -48,7 +48,6 @@ onUnmounted(() => {
 
 <template>
   <section class="parallax" ref="parallaxSection">
-    <h1 class="parallax__title">Parallax</h1>
     <img class="parallax__image effect" :src="Background" alt="Background" />
     <img class="parallax__image effect" :src="Clouds" alt="Clouds" />
     <img class="parallax__image effect" :src="Light" alt="Light" />

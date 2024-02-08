@@ -40,7 +40,9 @@ onMounted(loadPokemonData)
   <Confetti v-if="correctAnswersCount === 5" />
   <div class="summary">
     <img v-if="correctAnswersCount === 5" :src="Winner" alt="Winner" class="summary__win" />
-    <p v-else class="title__light">{{ correctAnswersCount }} correct answers out of 5 questions</p>
+    <div v-else class="summary__container">
+      <p class="title__light">{{ correctAnswersCount }} correct answers out of 5 questions</p>
+    </div>
     <ul class="summary__list">
       <li class="summary__item" v-for="step in pokemonData" :key="step.question">
         <div class="summary__item--container">
@@ -74,11 +76,12 @@ onMounted(loadPokemonData)
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 5rem;
   &__list {
     list-style-type: none;
     padding: 0;
     width: 100%;
-    min-height: 20vh;
+    min-height: 30vh;
   }
   &__item {
     margin-bottom: 1em;
@@ -109,6 +112,15 @@ onMounted(loadPokemonData)
   }
   &__win {
     width: 10rem;
+  }
+  &__container {
+    background-color: $secondary;
+    padding: 1rem 3rem;
+    border-radius: $mainCard;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
 </style>

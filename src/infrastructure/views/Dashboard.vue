@@ -57,7 +57,7 @@ const losers = computed(() => {
   }
 
   height: auto;
-  max-height: 100vh;
+  max-height: 91vh;
   overflow: auto;
 
   &__container {

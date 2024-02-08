@@ -2,9 +2,11 @@
 import { ref } from 'vue'
 import type { IUser } from '@/domain/models/users.model'
 import { useUsers } from '@/infrastructure/composables/useUser.composable'
-import { useRouter } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
 import { useUserStore } from '@/infrastructure/stores/user'
 import { isValidEmail } from '@/infrastructure/utilities/valid-email.util'
+import Banner from '@/infrastructure/assets/images/banner.png'
+import Header from '@/infrastructure/components/Header.vue'
 
 const { isRegisteredUser } = useUsers()
 const router = useRouter()
@@ -34,9 +36,46 @@ const validateUser = (): void => {
 </script>
 
 <template>
-  <section class="container">
-    <label for="email">Email</label>
-    <input class="input" type="text" v-model="user.email" />
-    <button class="button" @click="validateUser">Validate</button>
+  <section class="container form" :style="{ backgroundImage: `url(${Banner})` }">
+    <Header>
+      <nav class="navigation">
+        <RouterLink class="link" to="/dashboard">Dashboard</RouterLink>
+      </nav>
+    </Header>
+    <div class="form__container">
+      <input class="input" type="text" v-model="user.email" placeholder="Email" />
+      <div>
+        <button class="button" @click="validateUser">Validate</button>
+      </div>
+    </div>
   </section>
 </template>
+<style scoped lang="scss">
+.form {
+  background-size: cover;
+  position: relative;
+  background-position: bottom;
+  &:before {
+    content: '';
+    background: $secondary;
+    background: linear-gradient(
+      180deg,
+      rgba(19, 41, 57, 1) 30%,
+      rgba(49, 69, 82, 1) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  &__container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+</style>

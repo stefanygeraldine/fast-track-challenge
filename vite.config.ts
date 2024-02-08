@@ -12,5 +12,15 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
-  base: '/fast-track-challenge'
+  base: '/fast-track-challenge',
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `
+        @import "@/infrastructure/assets/scss/abstracts/abstracts.scss";
+        @import "@/infrastructure/assets/scss/main.scss";
+        `
+      }
+    }
+  }
 })

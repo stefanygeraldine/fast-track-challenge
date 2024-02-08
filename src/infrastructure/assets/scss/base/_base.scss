@@ -1,0 +1,25 @@
+body{
+  background-color: $secondary;
+  margin: 0;
+}
+section{
+  height: 100vh;
+}
+
+.link{
+  background-color: transparent;
+  font-family: 'Roboto', sans-serif;
+  color: $primary;
+  border:0;
+  padding: 0.5rem;
+  font-size: 1.5vw;
+  text-decoration: none;
+}
+
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+

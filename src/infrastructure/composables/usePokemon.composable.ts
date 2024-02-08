@@ -35,6 +35,16 @@ export function usePokemon() {
     }
   }
 
+  const fetchPokemon = async (id: number | string): Promise<any> => {
+    try {
+      const data = await pokemonService.fetchPokemonFull(id)
+      return data
+    } catch (err) {
+      console.error(err)
+      throw err
+    }
+  }
+
   return {
     pokemons,
     pokemonFull,
@@ -42,6 +52,7 @@ export function usePokemon() {
     isFetchingPokemons,
     error,
     fetchPokemons,
+    fetchPokemon,
     fetchPokemonFull
   }
 }

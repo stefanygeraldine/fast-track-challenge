@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { watch, ref } from 'vue'
-import ErrorSound from '@/infrastructure/assets/error.mp3'
-import SuccessSound from '@/infrastructure/assets/success.mp3'
+import ErrorSound from '@/infrastructure/assets/sounds/error.mp3'
+import SuccessSound from '@/infrastructure/assets/sounds/success.mp3'
 import type { StepStatus } from '@/domain/models/steps.model'
 
 const props = defineProps<{

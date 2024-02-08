@@ -14,15 +14,25 @@ import type { IUser } from '@/domain/models/users.model'
 import type { IStep, StepStatus } from '@/domain/models/steps.model'
 import { RouterLink } from 'vue-router'
 
-import Fondo from '@/infrastructure/assets/fondo.svg'
+import Fondo from '@/infrastructure/assets/images/fondo3.svg'
 
 const { addUser } = useUsers()
 const { user } = useUserStore()
 const { fetchPokemonFull, fetchPokemons, isFetchingPokemonFull, pokemonFull, pokemons } =
   usePokemon()
 
-const challengeSteps = ref<IStep[]>([])
+const challengeSteps = ref<IStep[]>([
+  /*
+  { answer: 'arcanine', question: 'arcanine' },
+  { answer: 'jigglypuff', question: 'jigglypuff' },
+  { answer: 'beedrill', question: 'beedrill' },
+  { answer: 'vileplume', question: 'vileplume' },
+  { answer: 'wigglytuff', question: 'wigglytuff' }
+  
+     */
+])
 const usedPokemonIds = ref<number[]>([])
+const bgColor = ref<string>('#132939')
 
 const stepStatus = ref<StepStatus>('initial')
 const isCompletedChallenge = ref<boolean>(false)
@@ -42,6 +52,9 @@ const setStepStatus = (value: StepStatus) => {
 
 const addStep = (step: IStep): void => {
   challengeSteps.value.push(step)
+}
+const updateBgColor = (color: string): void => {
+  bgColor.value = color
 }
 
 const correctAnswers = computed(() => {
@@ -86,17 +99,18 @@ onMounted(() => {
 
 <template>
   <section
-    class="container"
+    class="container challenge"
     :style="{
       backgroundImage: 'url(' + Fondo + ')',
       backgroundSize: 'cover',
-      backgroundPosition: 'center'
+      backgroundPosition: 'center',
+      backgroundColor: bgColor
     }"
   >
     <Header>
       <nav class="navigation">
-        <RouterLink class="button" to="/sign-in">Change User</RouterLink>
-        <RouterLink class="button" to="/dashboard">Dashboard</RouterLink>
+        <RouterLink class="link" to="/sign-in">Change User</RouterLink>
+        <RouterLink class="link" to="/dashboard">Dashboard</RouterLink>
       </nav>
     </Header>
     <Summary v-if="isCompletedChallenge" :challengeSteps="challengeSteps" />
@@ -105,6 +119,7 @@ onMounted(() => {
         :isFetchingPokemonFull="isFetchingPokemonFull"
         :pokemonFull="pokemonFull"
         :stepStatus="stepStatus"
+        @update-bg-color="updateBgColor"
       />
       <Trivia
         :pokemonFull="pokemonFull"
@@ -118,6 +133,11 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.challenge {
+  margin-top: 5rem;
+  height: auto;
+  min-height: 50rem;
+}
 .navigation {
   background-color: #132939;
 }

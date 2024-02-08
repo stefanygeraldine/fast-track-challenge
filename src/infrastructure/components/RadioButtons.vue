@@ -41,6 +41,7 @@ watch(optionSelected, (newValue) => {
   display: flex;
   align-items: center;
   gap: 24px;
+  margin-bottom: 1rem;
 }
 
 .radio-button {
@@ -61,9 +62,11 @@ watch(optionSelected, (newValue) => {
   padding-left: 30px;
   margin-bottom: 10px;
   position: relative;
-  font-size: 16px;
+  font-size: 2rem;
+  font-family: 'Roboto', sans-serif;
   color: #fff;
   cursor: pointer;
+  text-transform: capitalize;
   transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
 

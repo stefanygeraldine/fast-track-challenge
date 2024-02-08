@@ -19,7 +19,7 @@ const adjustSectionHeight = () => {
 
 const parallaxEffect = () => {
   const images = document.querySelectorAll('.effect')
-  const speeds = [0.2, 0.4, 0.6, 0.8, 1.0] // Ajusta estos valores según necesites
+  const speeds = [0.2, 0.4, 0.6, 0.8, 1.0]
 
   images.forEach((img, index) => {
     const speed = speeds[index]
@@ -36,6 +36,7 @@ onMounted(() => {
   window.addEventListener('scroll', parallaxEffect)
   window.addEventListener('load', adjustSectionHeight)
   window.addEventListener('resize', adjustSectionHeight)
+  adjustSectionHeight()
 })
 
 onUnmounted(() => {

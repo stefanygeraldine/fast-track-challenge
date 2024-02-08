@@ -36,12 +36,15 @@ watch(optionSelected, (newValue) => {
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .radio-buttons-container {
-  display: flex;
-  align-items: center;
+  @include breakpoint($tablet-landscape, 'min') {
+    @include flex(row, center);
+  }
+  @include flex(column, flex-start);
+
   gap: 24px;
-  margin-bottom: 1rem;
+  margin: 0.5rem 0;
 }
 
 .radio-button {
@@ -62,12 +65,15 @@ watch(optionSelected, (newValue) => {
   padding-left: 30px;
   margin-bottom: 10px;
   position: relative;
-  font-size: 2rem;
+  font-size: 1rem;
   font-family: 'Roboto', sans-serif;
   color: #fff;
   cursor: pointer;
   text-transform: capitalize;
   transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  @include breakpoint($tablet-landscape, 'min') {
+    font-size: 1.5rem;
+  }
 }
 
 .radio-button__custom {
@@ -78,23 +84,23 @@ watch(optionSelected, (newValue) => {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 2px solid #555;
+  border: 2px solid $primary;
   transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .radio-button__input:checked + .radio-button__label .radio-button__custom {
   transform: translateY(-50%) scale(0.9);
-  border: 5px solid #4c8bf5;
-  color: #4c8bf5;
+  border: 5px solid $accent;
+  color: $accent;
 }
 
 .radio-button__input:checked + .radio-button__label {
-  color: #4c8bf5;
+  color: $accent;
 }
 
 .radio-button__label:hover .radio-button__custom {
   transform: translateY(-50%) scale(1.2);
-  border-color: #4c8bf5;
-  box-shadow: 0 0 10px #4c8bf580;
+  border-color: $accent;
+  box-shadow: 0 0 10px $accent;
 }
 </style>

@@ -109,8 +109,8 @@ onMounted(() => {
   >
     <Header>
       <nav class="navigation">
-        <RouterLink class="link" to="/sign-in">Change User</RouterLink>
-        <RouterLink class="link" to="/dashboard">Dashboard</RouterLink>
+        <RouterLink class="link__light" to="/sign-in">Change User</RouterLink>
+        <RouterLink class="link__light" to="/dashboard">Dashboard</RouterLink>
       </nav>
     </Header>
     <Summary v-if="isCompletedChallenge" :challengeSteps="challengeSteps" />

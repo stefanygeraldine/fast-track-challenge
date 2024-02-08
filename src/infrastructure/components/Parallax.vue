@@ -48,7 +48,6 @@ onUnmounted(() => {
 
 <template>
   <section class="parallax" ref="parallaxSection">
-    <h1 class="parallax__title">Parallax</h1>
     <img class="parallax__image effect" :src="Background" alt="Background" />
     <img class="parallax__image effect" :src="Clouds" alt="Clouds" />
     <img class="parallax__image effect" :src="Light" alt="Light" />
@@ -64,6 +63,7 @@ onUnmounted(() => {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  z-index: 4;
   &__title {
     position: absolute;
   }
@@ -74,7 +74,7 @@ onUnmounted(() => {
     left: 0;
   }
   &__logo {
-    z-index: 1;
+    z-index: 3;
     width: 37%;
   }
 }

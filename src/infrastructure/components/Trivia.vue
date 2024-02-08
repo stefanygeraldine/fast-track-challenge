@@ -75,10 +75,12 @@ const handleSelected = (value: string) => {
 
 <style scoped lang="scss">
 .form {
-  margin-top: 3rem;
+  @include breakpoint($tablet-landscape, 'min') {
+    margin-top: 3rem;
+  }
   background-color: $secondary;
   padding: 2rem 3rem;
-  border-radius: 2rem;
+  border-radius: $mainCard;
   &__powers {
     display: flex;
     width: 100%;

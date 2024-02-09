@@ -47,7 +47,14 @@ const validateUser = (): void => {
       </nav>
     </Header>
     <div class="form__container">
-      <input class="input" type="text" v-model="user.email" placeholder="Email" />
+      <h1 class="form__container--title display__heavy">Are you ready for the challenge?</h1>
+      <input
+        class="input"
+        type="email"
+        v-model="user.email"
+        @keyup.enter="validateUser"
+        placeholder="Email"
+      />
       <div>
         <button class="button" @click="validateUser">Validate</button>
       </div>
@@ -65,6 +72,9 @@ const validateUser = (): void => {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    &--title {
+      text-align: center;
+    }
   }
   &__image {
     position: fixed;

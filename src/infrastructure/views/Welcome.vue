@@ -5,6 +5,7 @@ import ParallaxStars from '@/infrastructure/components/ParallaxStars.vue'
 import Banner from '@/infrastructure/assets/images/banner.png'
 import { onMounted, onBeforeUnmount, ref } from 'vue'
 import FooterSvg from '@/infrastructure/assets/parallax/footer.svg'
+import MobileBg from '@/infrastructure/assets/images/mobilebg.png'
 const startSection = ref<HTMLElement | null>(null)
 
 const windowWidth = ref(window.innerWidth)
@@ -22,7 +23,8 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <Parallax />
+  <Parallax v-if="windowWidth > 1024" />
+  <img v-else class="banner__image" :src="MobileBg" alt="banner" />
   <section
     class="container banner"
     :style="{ backgroundImage: `url(${Banner})` }"
@@ -72,6 +74,7 @@ onBeforeUnmount(() => {
     height: 50%;
   }
   &__image {
+    width: 100%;
     &--footer {
       position: absolute;
       width: 100%;

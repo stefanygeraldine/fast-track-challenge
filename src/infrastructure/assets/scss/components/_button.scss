@@ -1,21 +1,24 @@
-.button{
-  background-color: $secondary;
-  font-family: 'Roboto', sans-serif;
-  border: solid 3px #ffcc01;
-  color: #ffcc01;
-  border-radius: $radioButton;
-  padding: 1rem 3rem;
+.button {
   @include fluid-property('font-size', 16, 30);
+  background-image: linear-gradient(to right, $accent  0%,  $secondary   51%, $secondary   100%);
+  border-radius: $radioButton;
+  border: solid 3px $primary;
+  color: $primary;
+  padding: 1rem 3rem;
+  font-family: 'Avenir Black', sans-serif;
   text-decoration: none;
   margin: 0.5rem 0;
+  transition: 0.5s;
+  background-size: 200% auto;
+
+  display: block;
   &:hover {
-    cursor: pointer;
-    border: solid 3px #3264b0;
-    transition: background-color 0.3s, color 0.3s;
+    background-position: right center; /* change the direction of the change here */
+    color: $white;
+    text-decoration: none;
   }
-  &:active {
-    box-shadow: 0 2px #666;
-    transform: translateY(4px);
-  }
+
 }
+
+
 

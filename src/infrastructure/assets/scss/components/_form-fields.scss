@@ -2,7 +2,7 @@
   @include fluid-property('font-size', 16, 30);
   font-family: 'Roboto', sans-serif;
   border: solid 3px $primary;
-  background-color: $secondary;
+ background-image: linear-gradient(to right, $secondary  0%,  $accent   51%, $secondary   100%);
   border-radius: 3rem;
   padding: 1rem 3rem;
   color: $white;
